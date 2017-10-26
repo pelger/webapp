@@ -20,6 +20,6 @@
     "serve-favicon": "~2.3.2"
   },
   "devDependencies": {
-    "deployme-ecs": "^1.0.2"
+    "deployme-ecs": "^1.0.4"
   }
 }
