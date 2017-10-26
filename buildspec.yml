@@ -2,6 +2,7 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - npm install
       - $(aws ecr get-login --region $AWS_REGION)
   build:
     commands:
@@ -10,4 +11,7 @@ phases:
   post_build:
     commands:
       - docker push $AWS_ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$IMAGE_REPO_NAME:$CODEBUILD_RESOLVED_SOURCE_VERSION
-
+      - npm run deploy
+artifacts:
+  files:
+    - '**/*'
