@@ -2,6 +2,8 @@ version: 0.2
 phases:
   pre_build:
     commands:
+      - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay&
+      - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"
       - nohup /usr/local/bin/dockerd --host=unix:///var/run/docker.sock --host=tcp://0.0.0.0:2375 --storage-driver=overlay& - timeout -t 15 sh -c "until docker info; do echo .; sleep 1; done"
       - $(aws ecr get-login --region $AWS_REGION)
   build:
