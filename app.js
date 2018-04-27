@@ -26,6 +26,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function (req, res, next) {
+  // comment
   next()
   evt.logEvent({type: 'page', url: req.protocol + '://' + req.get('host') + req.originalUrl})
 })
