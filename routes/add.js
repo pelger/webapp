@@ -20,7 +20,6 @@ router.post('/calculate', function (req, res, next) {
       if (err) { console.log(err) }
 
       res.render('add', {first: req.body.first, second: req.body.second, result: resultObj.result})
-      /*
       var calcString = '' + req.body.first + ' + ' + req.body.second
       helper.createClient('auditservice', function (err, auditClient) {
         if (err) { console.log(err) }
@@ -28,7 +27,6 @@ router.post('/calculate', function (req, res, next) {
           if (err) { console.log(err) }
         })
       })
-      */
     })
   })
 })
