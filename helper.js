@@ -6,7 +6,7 @@ module.exports = function () {
 
   function createClient (name, cb) {
     // conc.dns.resolve('_main._tcp.' + name + '.micro.svc.cluster.local', function (err, result) {
-    conc.dns.resolve('_main._tcp.' + name + '.internal', function (err, result) {
+    conc.dns.resolve('_main._tcp.' + name + '.micro.internal', function (err, result) {
       if (err) { console.log(err); return cb(err) }
       cb(err, restify.createJsonClient({url: 'http://' + result[0].host + ':' + result[0].port}))
     })
